@@ -1,12 +1,15 @@
 import logo from "./logo.svg";
 import "./App.css";
-import HomeScreen from "./HomeScreen";
+import HomeScreen from "./HomeScreen.js";
+import Contact from "./Contact.js";
+import { HashRouter, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <HomeScreen></HomeScreen>
-    </div>
+    <HashRouter basename="/">
+      <Route exact path="/" component={HomeScreen} />
+      <Route path="/contact" component={Contact} />
+    </HashRouter>
   );
 }
 
