@@ -1,11 +1,11 @@
 import logo from "./logo.svg";
 import "./App.css";
+import HomeScreen from "./HomeScreen";
 
 function App() {
   return (
     <div className="App">
-      <h1>React App</h1>
-      <h2>Author: Rikard</h2>
+      <HomeScreen></HomeScreen>
     </div>
   );
 }

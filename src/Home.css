@@ -1,0 +1,208 @@
+@import url("https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap");
+
+.Container {
+  position: relative;
+  height: 200vh;
+  overflow: auto;
+  background-color: #151515;
+}
+
+.HeadInfo {
+  width: 100vw;
+  height: 6vh;
+  background-color: #151515;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  border-color: white;
+}
+
+.Grids {
+  width: 38vw;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.Boxes {
+  width: 35vw;
+  height: 30vh;
+  border-radius: 1vw;
+}
+
+.BoxContent {
+  width: 80%;
+  height: 80%;
+  margin-top: 2.5vh;
+  margin-left: 3vw;
+
+  font-family: "Dela Gothic One", cursive;
+  font-size: 0.8vw;
+  color: white;
+
+  transition: 150ms linear;
+}
+
+.BoxContent:hover {
+  opacity: 0.8;
+
+  -moz-transition: opacity 0.2s ease-out;
+  -webkit-transition: opacity 0.2s ease-out;
+  -o-transition: opacity 0.2s ease-out;
+  transform: scale(1.03);
+  transition: 150ms linear;
+}
+
+.Name {
+  float: left;
+  height: 25vh;
+  width: 30vw;
+  font-family: "Dela Gothic One", cursive;
+  font-size: 1.5vw;
+  color: white;
+  margin-top: 5vh;
+  margin-left: 6vw;
+}
+
+.MyInfo {
+  font-family: "Dela Gothic One", cursive;
+  font-size: 1vw;
+  width: 40vw;
+  margin-top: 3vh;
+  margin-left: 6vw;
+  height: 30vh;
+
+  color: white;
+}
+
+.Left {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  height: 90vh;
+  display: flex;
+
+  float: left;
+}
+
+.Right {
+  float: left;
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  height: 90vh;
+}
+
+.About {
+  font-weight: 900;
+  width: 10vw;
+  height: 3vh;
+  margin-right: 2vw;
+  margin-top: 3vh;
+
+  text-align: center;
+  line-height: 3vh;
+  transition: 150ms linear;
+}
+
+.About:hover {
+  opacity: 0.8;
+
+  -moz-transition: opacity 0.2s ease-out;
+  -webkit-transition: opacity 0.2s ease-out;
+  -o-transition: opacity 0.2s ease-out;
+  transform: scale(1.03);
+  transition: 150ms linear;
+}
+
+.Contact {
+  font-weight: 900;
+  width: 10vw;
+  height: 3vh;
+  margin-right: 5vw;
+  margin-top: 3vh;
+
+  text-align: center;
+
+  transition: 150ms linear;
+}
+
+.Contact:hover {
+  opacity: 0.8;
+
+  -moz-transition: opacity 0.2s ease-out;
+  -webkit-transition: opacity 0.2s ease-out;
+  -o-transition: opacity 0.2s ease-out;
+  transform: scale(1.03);
+  transition: 150ms linear;
+}
+
+.RightTitle {
+  width: 20vw;
+  height: 10vh;
+
+  font-family: "Shadows Into Light", cursive;
+  font-size: 40px;
+  color: white;
+  margin-top: 4.5vh;
+}
+
+.LeftTitle {
+  width: 50vw;
+  height: 10vh;
+  margin-left: 15vw;
+  margin-bottom: 5vh;
+
+  font-family: "Shadows Into Light", cursive;
+  font-size: 40px;
+  color: white;
+  display: flex;
+  flex-direction: row;
+}
+
+.Arrow {
+  margin-top: 5%;
+}
+
+.Bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.PopUp {
+  width: 70vw;
+  height: 40vh;
+  display: flex;
+  flex-direction: row;
+
+  margin: auto;
+}
+
+.LeftSlide {
+  width: 30%;
+}
+
+.LeftSlide img {
+  width: 90px;
+  height: 80px;
+  float: right;
+  margin-right: 6vw;
+}
+
+.RightSlide {
+  width: 70%;
+  height: 90%;
+  margin: auto;
+
+  color: white;
+  font-size: 2vw;
+  font-weight: 200;
+}
