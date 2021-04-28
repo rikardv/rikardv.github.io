@@ -3,15 +3,36 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import "./Home.css";
 import UnityLogo from "./Assets/unity.png";
-import ReactLogo from "./Assets/logo.png";
 import Arrow from "./Assets/arrow.png";
-import { Link } from "react-router-dom";
+import Man from "./Assets/man.png";
+import Contact from "./Contact.js";
+import axios from "axios";
+import IphoneSlide from "./Assets/pag3.png";
+import FacebookImg from "./Assets/fcbk.png";
+import LegoImage from "./Assets/lsd.svg";
 
 class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isClicked: false };
+    this.state = { isClicked: false, quoteItem: "", authorItem: "" };
     this.handleClick = this.handleClick.bind(this);
+  }
+
+  getQuoteData() {
+    axios
+      .get("http://quotes.stormconsultancy.co.uk/random.json", {})
+      .then((res) => {
+        const Items = res.data;
+
+        this.setState({ quoteItem: Items.quote, authorItem: Items.author });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  componentDidMount() {
+    this.getQuoteData();
   }
 
   handleClick() {
@@ -26,86 +47,126 @@ class HomeScreen extends React.Component {
     });
     return (
       <div className="Container">
-        <div className="HeadInfo">
-          <div className="About">
-            <Link to="/" style={{ color: "white", textDecoration: "none" }}>
-              About
-            </Link>
-          </div>
-          <div className="Contact">
-            <Link
-              to="/contact"
-              style={{ color: "white", textDecoration: "none" }}
-            >
-              Contact
-            </Link>
-          </div>
-        </div>
-
         <div className="Left">
           <div className="Name">
-            <h1>RIKARD VESTERGAARD</h1>
+            RIKARD <br></br>VESTERGAARD
           </div>
 
-          <div className="MyInfo">
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum."
+          <div className="MyInfo" data-Aos="fade-right">
+            <div className="PersonalInfo">
+              Student i Norrköping. Civilingenjör i Medieteknik. Intresserad av
+              <span className="breadText"> teknik och design.</span>
+            </div>
+            <div className="QuoteContainer">
+              My motto
+              <br></br>
+              <span className="quoteText">
+                <span className="breadText">while</span>(noSuccess)<br></br>
+                {"{"}
+                <br></br>
+                <span style={{marginLeft: '2vw'}}>tryAgain();</span><br></br>
+                <br></br><span className="breadText" style={{marginLeft: '2vw'}}>if</span>(Dead)<br></br>
+                
+                <span className="breadText" style={{marginLeft: '3vw'}}>break;</span><br></br>
+                {"}"}
+              </span>
+              
+              <br></br>
+              
+              
+            </div>
           </div>
 
           <div className="LeftTitle">
-            <div style={{ height: "100%", width: "40%" }}>Mina projekt</div>
-
-            <img className="Arrow" src={Arrow} alt="Logo"></img>
+            <div className="ProjectTitle">
+              Scrolla ned och se mina projekt{" "}
+              <img className="Arrow" src={Arrow} alt="Logo"></img>
+            </div>
           </div>
         </div>
 
         <div className="Right">
-          <div className="RightTitle">Titel</div>
+          <div className="RightTitle"></div>
           <div className="Grids">
-            <div className="Boxes" style={{ backgroundColor: "#FF937B" }}>
-              <div className="BoxContent" onClick={this.handleClick}>
-                {" "}
-                {this.state.isClicked
-                  ? "Display new text here"
-                  : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud "}
+            {this.state.isClicked ? (
+              <div className="Form">
+                <div className="ExitButton" onClick={this.handleClick}>
+                  X
+                </div>
+                <Contact></Contact>
               </div>
-            </div>
-            <div className="Boxes" style={{ backgroundColor: "#757575" }}>
-              <div className="BoxContent">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud
+            ) : (
+              <div className="ContactText">
+                <div className="InnerText" onClick={this.handleClick}>
+                  Kontaka mig
+                </div>
+                <div className="InnerTextFacebook">
+                  <a
+                    href="https://www.facebook.com/rikardv98/"
+                    className="breadText"
+                  >
+                    <img src={FacebookImg}></img>
+                  </a>
+                </div>
+
+                <img src={Man}></img>
               </div>
-            </div>
+            )}
           </div>
         </div>
 
-        <div className="Bottom">
-          <div className="PopUp">
-            <div className="LeftSlide" data-aos="fade-right">
-              <img src={ReactLogo} alt="Logo"></img>
-            </div>
-            <div className="RightSlide" data-aos="fade-left">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud
+        <div className="BottomContainer">
+          <div className="BottomFirst">
+            <div className="PopUp">
+              <div className="LeftSlide" data-aos="fade-right">
+                <img src={IphoneSlide} alt="Logo"></img>
+              </div>
+              <div className="RightSlide" data-aos="fade-left">
+                I samband med kursen Kommunikation och Användargränssnitt
+                utvecklades en app-prototyp för Arbetets Museum i React Native.
+                Detta för att underlätta för besökare att navigera och läsa om
+                utställningarna som finns.{" "}
+              </div>
             </div>
           </div>
 
-          <div className="PopUp">
-            <div className="LeftSlide" data-aos="fade-right">
-              <img src={UnityLogo} alt="logo" style={{ width: "80px" }}></img>
-            </div>
+          <div className="Bottom">
+            <div className="PopUp">
+              <div className="LeftSlide" data-aos="fade-right">
+                <img src={UnityLogo} alt="logo" style={{ width: "80px" }}></img>
+              </div>
 
-            <div className="RightSlide" data-aos="fade-left">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud
+              <div className="RightSlide" data-aos="fade-left">
+                (Pågende projekt) Slumpmässigt genererad 3D stadsmiljö med ett
+                kontrollerat trafiksystem baserat på AI.
+              </div>
+            </div>
+          </div>
+
+          <div className="Bottom">
+            <div className="PopUp">
+              <div className="LeftSlide" data-aos="fade-right">
+                <img
+                  src={LegoImage}
+                  alt="logo"
+                  style={{ width: "200px" }}
+                ></img>
+              </div>
+
+              <div className="RightSlide" data-aos="fade-left">
+                Presenterar legostatistik ur en SQL-databas. Allt från hur
+                antalet set ökat per år till den mest använda legobiten. Klicka{" "}
+                <span className="breadText" onClick>
+                  {" "}
+                  <a
+                    href="http://www.student.itn.liu.se/~timmy449/om.php"
+                    className="breadText"
+                  >
+                    här
+                  </a>
+                </span>{" "}
+                för gå till sidan.
+              </div>
             </div>
           </div>
         </div>

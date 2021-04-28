@@ -15,46 +15,37 @@ function Contact() {
     );
   }
   return (
-    <div className="CContainer">
-      <div className="HeadInfo">
-        <Link to="/" className="CContact">
-          Gå tillbaka
-        </Link>
+    <form onSubmit={handleSubmit}>
+      <label htmlFor="email">*Email</label>
+
+      <div className="Errors">
+        <ValidationError prefix="Email" field="email" errors={state.errors} />
       </div>
+      <input
+        id="email"
+        type="email"
+        name="email"
+        placeholder="email@doman.se"
+      />
 
-      <div className="Form">
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="email">*Email Address</label>
-          <div className="Errors">
-            <ValidationError
-              prefix="Email"
-              field="email"
-              errors={state.errors}
-            />
-          </div>
-          <input
-            id="email"
-            type="email"
-            name="email"
-            placeholder="minemail@doman.se"
-          />
-
-          <div className="Msg">Meddelande</div>
-          <div className="Errors">
-            <ValidationError
-              prefix="Message"
-              field="message"
-              errors={state.errors}
-            />
-          </div>
-          <textarea id="message" name="message" />
-
-          <button type="submit" disabled={state.submitting}>
-            Skicka
-          </button>
-        </form>
+      <div className="Msg">Meddelande</div>
+      <div className="Errors">
+        <ValidationError
+          prefix="Message"
+          field="message"
+          errors={state.errors}
+        />
       </div>
-    </div>
+      <textarea
+        id="message"
+        name="message"
+        placeholder="Hej, mitt namn är..."
+      />
+
+      <button type="submit" disabled={state.submitting}>
+        Skicka
+      </button>
+    </form>
   );
 }
 
