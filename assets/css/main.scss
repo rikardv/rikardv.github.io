@@ -30,6 +30,13 @@ body {
     background-color: $color-bg;
     letter-spacing: -0.05em;
     -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.site-main {
+    flex: 1;
 }
 
 a {
@@ -73,11 +80,11 @@ h6 {
 
 h1 {
     font-size: $font-size-3xl;
-    margin-bottom: $spacing-lg;
+    margin-bottom: $spacing-sm;
 }
 h2 {
     font-size: $font-size-2xl;
-    margin-bottom: $spacing-md;
+    margin-bottom: $spacing-sm;
     margin-top: $spacing-xl;
 }
 h3 {
@@ -111,12 +118,10 @@ p {
 // LAYOUT
 // ============================================================
 
-.site-main {
-    min-height: calc(100vh - 120px);
-}
 
 .page-wrapper {
-    padding: $spacing-xl $content-padding $spacing-xl var(--content-left, #{$content-padding});
+    padding: $spacing-xl $content-padding $spacing-xl
+        var(--content-left, #{$content-padding});
     max-width: calc(var(--content-left, #{$content-padding}) + #{$max-width});
 }
 
@@ -164,7 +169,7 @@ p {
 // Row 2: navigation bar (light background)
 .site-nav {
     background-color: $color-bg;
-    border-bottom: 1px solid $color-border;
+    padding-top: $spacing-xs;
 
     &__inner {
         padding: 0 $content-padding 0 var(--content-left, #{$content-padding});
@@ -183,13 +188,12 @@ p {
     font-size: $font-size-base;
     color: $color-text;
     text-decoration: none;
-    padding: $spacing-xs $spacing-sm;
+    padding: $spacing-xs $spacing-xl 0 0;
     display: inline-block;
     white-space: nowrap;
     position: relative;
     z-index: 0;
-
-    &:hover {
+    j &:hover {
         color: #1e05ff;
         text-decoration: none;
     }
@@ -199,6 +203,8 @@ p {
 
     &--startsida {
         text-decoration: none;
+        font-style: italic;
+        padding-right: $spacing-2xl;
     }
 
     &--material,
@@ -211,9 +217,9 @@ p {
         font-style: italic;
     }
 
-    &--active {
+    /* &--active {
         text-decoration: underline;
-    }
+    } */
 }
 
 // Dropdown
@@ -223,7 +229,6 @@ p {
     top: 100%;
     left: 0;
     background-color: #f2ff9e;
-    border: 1px solid $color-border;
     list-style: none;
     padding: $spacing-sm 0;
     min-width: 200px;
@@ -251,7 +256,7 @@ p {
     &::before {
         content: "";
         position: absolute;
-        inset: 1px -1px -1px 1px;
+        inset: 1px 1px 1px 1px;
         background-color: #f2ff9e;
         z-index: -1;
         opacity: 0;
@@ -292,9 +297,10 @@ p {
 // ============================================================
 
 .home-wrapper {
-    padding: $spacing-xl $content-padding $spacing-xl var(--content-left, #{$content-padding});
+    padding: $spacing-xl $content-padding 0
+        var(--content-left, #{$content-padding});
     display: grid;
-    grid-template-columns: 1fr $sidebar-width;
+    grid-template-columns: $max-width $sidebar-width;
     gap: $spacing-xl;
     align-items: start;
 }
@@ -309,7 +315,7 @@ p {
 
 .home-title {
     font-size: $font-size-3xl;
-    margin-bottom: $spacing-lg;
+    margin-bottom: $spacing-sm;
 }
 
 .home-intro {
@@ -320,10 +326,23 @@ p {
 .home-section {
     margin-bottom: $spacing-xl;
 
+    &:last-child {
+        margin-bottom: 0;
+    }
+
     h2 {
-        font-size: $font-size-lg;
+        font-size: $font-size-2xl;
         margin-top: 0;
-        margin-bottom: $spacing-md;
+        margin-bottom: $spacing-sm;
+    }
+
+    &--card {
+        background: $color-bg-white;
+        padding: $spacing-md;
+
+        p {
+            font-weight: 600;
+        }
     }
 }
 
@@ -361,11 +380,12 @@ p {
         display: inline-block;
         font-family: $font-ui;
         font-size: $font-size-sm;
+        font-weight: 600;
         background: none;
         border: none;
         cursor: pointer;
         padding: 0;
-        color: $color-text;
+        color: #1e05ff;
 
         &::before {
             content: "→ ";
@@ -379,14 +399,16 @@ p {
 
 // Sidebar "Dagens hållbara" widget
 .sidebar-widget {
+    border: 2px solid $color-accent;
+    padding: $spacing-md;
+
     &__title {
-        font-family: $font-ui;
-        font-size: $font-size-sm;
-        font-weight: 600;
+        font-size: $font-size-lg;
+        font-weight: 400;
+        font-style: italic;
         color: $color-text;
         margin-bottom: $spacing-sm;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
+        letter-spacing: -0.05em;
     }
 }
 
@@ -402,6 +424,19 @@ p {
     margin-bottom: $spacing-sm;
     background: $color-bg-white;
     font-size: $font-size-sm;
+
+    &--hidden {
+        display: none;
+    }
+}
+
+.sidebar-list--expanded {
+    max-height: 400px;
+    overflow-y: auto;
+
+    .sidebar-list__item--hidden {
+        display: block;
+    }
 }
 
 .sidebar-list__title {
@@ -615,14 +650,13 @@ p {
     }
 
     &__subtitle {
-        font-family: $font-ui;
         font-size: $font-size-sm;
         color: $color-text-muted;
     }
 }
 
 .dagens-item {
-    padding: $spacing-md 0;
+    padding: $spacing-md;
     border-bottom: 1px solid $color-border-light;
 
     &:first-of-type {
@@ -630,7 +664,6 @@ p {
     }
 
     &__date {
-        font-family: $font-ui;
         font-size: $font-size-sm;
         font-weight: 600;
         color: $color-text;
@@ -668,12 +701,10 @@ p {
 
 .site-footer {
     background-color: #000;
-    margin-top: $spacing-2xl;
+    margin-top: $spacing-lg;
 }
 
 .site-footer__inner {
-    max-width: $max-width-wide;
-    margin: 0 auto;
     padding: $spacing-md $content-padding $spacing-lg;
 }
 
@@ -689,7 +720,9 @@ p {
 .site-footer__contact {
     font-family: "Outfit", sans-serif;
     font-size: $font-size-lg;
+    font-weight: 800;
     white-space: nowrap;
+    color: #fff;
 
     p {
         margin: 0;
@@ -706,8 +739,7 @@ p {
 .site-footer__tagline {
     font-family: "Outfit", sans-serif;
     font-size: $font-size-sm;
-    color: rgba(255, 255, 255, 0.6);
-    max-width: 250px;
+    color: #fff;
     text-align: right;
 
     p {
@@ -736,10 +768,6 @@ p {
     .home-wrapper {
         grid-template-columns: 1fr;
         gap: $spacing-lg;
-    }
-
-    .home-sidebar {
-        order: -1;
     }
 
     .site-footer__top {
