@@ -1,0 +1,50 @@
+---
+layout: default
+---
+<div class="home-wrapper">
+  <div class="home-main">
+    <h1 class="home-title">Välkommen till Hållbarhetsarkitekten</h1>
+
+    <div class="home-intro">
+      {{ content }}
+    </div>
+
+    <section class="home-section">
+      <h2>Vad är en hållbarhetsarkitekt?</h2>
+      <p>För en mer hållbar värld behöver vi planera in hållbara principer, tidigt. Vi behöver hållbarhetsarkitekter. Att vara hållbarhetsarkitekt handlar om att designa hela system. Den här hemsidan handlar specifikt om husbyggande, men till skillnad från en byggnadsarkitekt, handlar hållbarhetsarkitektur om att sätta den specifika byggnaden i en större samhällskontext. Det handlar om att designa beslut och skapa en långsiktig produkt som tar hänsyn till våra ekologiska system och skapar ett hus som ger något positivt tillbaka, både idag och i framtiden.</p>
+      <a href="/om/" class="arrow-link">Om Hållbarhetsarkitekten</a>
+    </section>
+
+    <section class="home-section">
+      <h2>Hör av dig</h2>
+      <p>Har du tankar kring det du läst, skicka gärna ett meddelande om du har tips, tankar eller frågor om innehållet.</p>
+      <form class="contact-form" action="https://formspree.io/f/placeholder" method="POST">
+        <label class="contact-form__label" for="message">Meddelande</label>
+        <textarea class="contact-form__textarea" id="message" name="message" placeholder="Skicka ett meddelande...."></textarea>
+        <button type="submit" class="contact-form__submit">Skicka</button>
+      </form>
+    </section>
+  </div>
+
+  <aside class="home-sidebar">
+    <div class="sidebar-widget">
+      <p class="sidebar-widget__title">Dagens hållbara</p>
+      <ul class="sidebar-list">
+        {% assign dagens_posts = site.posts | where: "category", "Dagens Hållbara" | limit: 6 %}
+        {% for post in dagens_posts %}
+        <li class="sidebar-list__item">
+          <span class="sidebar-list__title">{{ post.title | truncatewords: 8 }}</span>
+          <a href="{{ post.url | relative_url }}" class="sidebar-list__link">läs mer</a>
+        </li>
+        {% endfor %}
+        {% if dagens_posts.size == 0 %}
+        <li class="sidebar-list__item">
+          <span class="sidebar-list__title">Radioavsnitt om hållbart byggande</span>
+          <a href="/dagens-hallbara/" class="sidebar-list__link">läs mer</a>
+        </li>
+        {% endif %}
+      </ul>
+      <a href="/dagens-hallbara/" class="sidebar-load-more">ladda fler</a>
+    </div>
+  </aside>
+</div>

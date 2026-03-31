@@ -1,0 +1,97 @@
+<header class="site-header">
+  <div class="site-header__title-bar">
+    <a href="{{ '/' | relative_url }}" class="site-title"><span class="site-title__light">Hållbarhets</span><span class="site-title__bold">arkitekten</span></a>
+    <button class="nav-toggle" aria-label="Öppna meny" aria-expanded="false" aria-controls="site-nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <nav class="site-nav" id="site-nav" aria-label="Huvudnavigering">
+    <div class="site-nav__inner">
+      {% for item in site.navigation %}
+
+        {% comment %}Auto-discover sub-pages: any page whose URL starts with this item's URL but isn't the index{% endcomment %}
+        {% assign sub_pages = "" | split: "" %}
+        {% unless item.url == "/" %}
+          {% for p in site.pages %}
+            {% if p.url contains item.url and p.url != item.url %}
+              {% assign sub_pages = sub_pages | push: p %}
+            {% endif %}
+          {% endfor %}
+          {% assign sub_pages = sub_pages | sort: "title" %}
+        {% endunless %}
+
+        <div class="nav-item{% if sub_pages.size > 0 %} nav-item--has-dropdown{% endif %}">
+          <a href="{{ item.url | relative_url }}"
+             class="nav-link nav-link--{{ item.title | slugify }}{% if page.url == item.url %} nav-link--active{% endif %}"
+             {% if sub_pages.size > 0 %}aria-haspopup="true" aria-expanded="false"{% endif %}>
+            {{ item.title }}
+          </a>
+          {% if sub_pages.size > 0 %}
+          <ul class="nav-dropdown" role="menu">
+            {% for sub in sub_pages %}
+            <li role="none">
+              <a href="{{ sub.url | relative_url }}" class="nav-dropdown__link" role="menuitem">→ {{ sub.title }}</a>
+            </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+
+      {% endfor %}
+    </div>
+  </nav>
+</header>
+
+<script>
+  // Align nav and content to the "a" in "arkitekten"
+  function setContentLeft() {
+    const light = document.querySelector('.site-title__light');
+    if (!light) return;
+    const contentLeft = Math.round(light.getBoundingClientRect().right);
+    const minPad = 24;
+    const maxContentWidth = 637;
+    // Natural centering offset for the main content column
+    const naturalLeft = Math.max(minPad, Math.round((window.innerWidth - maxContentWidth) / 2));
+    // Grow with centering until we hit the alignment point, then lock
+    const offset = Math.min(naturalLeft, contentLeft);
+    document.documentElement.style.setProperty('--content-left', offset + 'px');
+  }
+  document.fonts.ready.then(setContentLeft);
+  window.addEventListener('resize', setContentLeft);
+
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('.site-nav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('site-nav--open');
+    });
+  }
+
+  document.querySelectorAll('.nav-item--has-dropdown .nav-link').forEach(link => {
+    link.addEventListener('click', e => {
+      const item = link.closest('.nav-item--has-dropdown');
+      const isOpen = item.classList.contains('nav-item--open');
+      document.querySelectorAll('.nav-item--open').forEach(el => {
+        el.classList.remove('nav-item--open');
+        el.querySelector('.nav-link').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        e.preventDefault();
+        item.classList.add('nav-item--open');
+        link.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.nav-item--has-dropdown')) {
+      document.querySelectorAll('.nav-item--open').forEach(el => {
+        el.classList.remove('nav-item--open');
+        el.querySelector('.nav-link').setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+</script>

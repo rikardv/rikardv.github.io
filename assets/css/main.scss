@@ -1,0 +1,817 @@
+---
+---
+
+@use "variables" as *;
+
+// ============================================================
+// RESET & BASE
+// ============================================================
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: $font-size-base;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: $font-body;
+    font-size: $font-size-base;
+    font-weight: 400;
+    font-style: normal;
+    line-height: $line-height-body;
+    color: $color-text;
+    background-color: $color-bg;
+    letter-spacing: -0.05em;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: $color-text;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+}
+
+ul,
+ol {
+    padding-left: $spacing-lg;
+}
+
+// ============================================================
+// TYPOGRAPHY
+// ============================================================
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $font-serif;
+    font-style: italic;
+    font-weight: 400;
+    line-height: $line-height-heading;
+    letter-spacing: -0.05em;
+    color: $color-text;
+}
+
+h1 {
+    font-size: $font-size-3xl;
+    margin-bottom: $spacing-lg;
+}
+h2 {
+    font-size: $font-size-2xl;
+    margin-bottom: $spacing-md;
+    margin-top: $spacing-xl;
+}
+h3 {
+    font-size: $font-size-xl;
+    margin-bottom: $spacing-md;
+    margin-top: $spacing-lg;
+}
+
+p {
+    margin-bottom: $spacing-md;
+}
+
+// Arrow links
+.arrow-link {
+    font-family: $font-ui;
+    font-size: $font-size-sm;
+    color: $color-text;
+    text-decoration: none;
+    display: inline-block;
+
+    &::before {
+        content: "→ ";
+    }
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+// ============================================================
+// LAYOUT
+// ============================================================
+
+.site-main {
+    min-height: calc(100vh - 120px);
+}
+
+.page-wrapper {
+    padding: $spacing-xl $content-padding $spacing-xl var(--content-left, #{$content-padding});
+    max-width: calc(var(--content-left, #{$content-padding}) + #{$max-width});
+}
+
+// ============================================================
+// HEADER & NAV
+// ============================================================
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+// Row 1: black title bar
+.site-header__title-bar {
+    max-width: 100%;
+    background-color: #000;
+    padding: 10px $content-padding;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.site-title {
+    font-family: "Outfit", sans-serif;
+    font-size: $font-size-3xl;
+    font-style: normal;
+    letter-spacing: -0.05em;
+    color: #fff;
+    text-decoration: none;
+    line-height: 1;
+
+    &:hover {
+        text-decoration: none;
+    }
+
+    &__light {
+        font-weight: 400;
+    }
+    &__bold {
+        font-weight: 700;
+    }
+}
+
+// Row 2: navigation bar (light background)
+.site-nav {
+    background-color: $color-bg;
+    border-bottom: 1px solid $color-border;
+
+    &__inner {
+        padding: 0 $content-padding 0 var(--content-left, #{$content-padding});
+        display: flex;
+        align-items: stretch;
+        flex-wrap: wrap;
+    }
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    font-family: $font-serif;
+    font-size: $font-size-base;
+    color: $color-text;
+    text-decoration: none;
+    padding: $spacing-xs $spacing-sm;
+    display: inline-block;
+    white-space: nowrap;
+    position: relative;
+    z-index: 0;
+
+    &:hover {
+        color: #1e05ff;
+        text-decoration: none;
+    }
+
+    // All items underlined except Startsida
+    text-decoration: underline;
+
+    &--startsida {
+        text-decoration: none;
+    }
+
+    &--material,
+    &--husdesign {
+        font-weight: 600;
+    }
+
+    &--stilguide {
+        font-weight: 600;
+        font-style: italic;
+    }
+
+    &--active {
+        text-decoration: underline;
+    }
+}
+
+// Dropdown
+.nav-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #f2ff9e;
+    border: 1px solid $color-border;
+    list-style: none;
+    padding: $spacing-sm 0;
+    min-width: 200px;
+    z-index: 200;
+
+    &__link {
+        font-family: $font-serif;
+        font-size: $font-size-base;
+        color: #1e05ff;
+        text-decoration: none;
+        display: block;
+        padding: $spacing-xs $spacing-md;
+
+        &:hover {
+            background-color: #e8f584;
+            text-decoration: none;
+        }
+    }
+}
+
+.nav-item--has-dropdown > .nav-link {
+    position: relative;
+    z-index: 0;
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 1px -1px -1px 1px;
+        background-color: #f2ff9e;
+        z-index: -1;
+        opacity: 0;
+        transition: opacity $transition-fast;
+    }
+
+    &:hover::before {
+        opacity: 1;
+    }
+}
+
+.nav-item--has-dropdown:hover .nav-dropdown,
+.nav-item--open .nav-dropdown {
+    display: block;
+}
+
+// Mobile hamburger
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: $spacing-sm;
+
+    span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background-color: #fff;
+        transition: transform $transition-fast;
+    }
+}
+
+// ============================================================
+// HOMEPAGE
+// ============================================================
+
+.home-wrapper {
+    padding: $spacing-xl $content-padding $spacing-xl var(--content-left, #{$content-padding});
+    display: grid;
+    grid-template-columns: 1fr $sidebar-width;
+    gap: $spacing-xl;
+    align-items: start;
+}
+
+.home-main {
+    min-width: 0;
+}
+
+.home-sidebar {
+    min-width: 0;
+}
+
+.home-title {
+    font-size: $font-size-3xl;
+    margin-bottom: $spacing-lg;
+}
+
+.home-intro {
+    font-size: $font-size-base;
+    margin-bottom: $spacing-xl;
+}
+
+.home-section {
+    margin-bottom: $spacing-xl;
+
+    h2 {
+        font-size: $font-size-lg;
+        margin-top: 0;
+        margin-bottom: $spacing-md;
+    }
+}
+
+// Contact form
+.contact-form {
+    margin-top: $spacing-lg;
+
+    &__label {
+        font-family: $font-ui;
+        font-size: $font-size-sm;
+        color: $color-text-muted;
+        display: block;
+        margin-bottom: $spacing-sm;
+    }
+
+    &__textarea {
+        width: 100%;
+        min-height: 65px;
+        padding: $spacing-sm;
+        border: 1px solid $color-border;
+        background-color: $color-bg-white;
+        font-family: $font-body;
+        font-size: $font-size-sm;
+        color: $color-text;
+        resize: vertical;
+        border-radius: 2px;
+
+        &::placeholder {
+            color: $color-text-light;
+        }
+    }
+
+    &__submit {
+        margin-top: $spacing-sm;
+        display: inline-block;
+        font-family: $font-ui;
+        font-size: $font-size-sm;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        color: $color-text;
+
+        &::before {
+            content: "→ ";
+        }
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+// Sidebar "Dagens hållbara" widget
+.sidebar-widget {
+    &__title {
+        font-family: $font-ui;
+        font-size: $font-size-sm;
+        font-weight: 600;
+        color: $color-text;
+        margin-bottom: $spacing-sm;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+}
+
+.sidebar-list {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-list__item {
+    border: 1px solid $color-border;
+    border-radius: 2px;
+    padding: $spacing-sm;
+    margin-bottom: $spacing-sm;
+    background: $color-bg-white;
+    font-size: $font-size-sm;
+}
+
+.sidebar-list__title {
+    display: block;
+    margin-bottom: $spacing-xs;
+    color: $color-text;
+}
+
+.sidebar-list__link {
+    font-family: $font-ui;
+    font-size: $font-size-xs;
+    color: $color-text;
+
+    &::before {
+        content: "→ ";
+    }
+}
+
+.sidebar-load-more {
+    font-family: $font-ui;
+    font-size: $font-size-sm;
+    display: block;
+    margin-top: $spacing-sm;
+
+    &::before {
+        content: "→ ";
+    }
+}
+
+// ============================================================
+// BREADCRUMB
+// ============================================================
+
+.breadcrumb {
+    font-family: $font-ui;
+    font-size: $font-size-sm;
+    color: $color-text-muted;
+    margin-bottom: $spacing-lg;
+
+    a {
+        color: $color-text-muted;
+        &:hover {
+            color: $color-text;
+            text-decoration: underline;
+        }
+    }
+}
+
+.breadcrumb-sep {
+    margin: 0 $spacing-xs;
+}
+
+// ============================================================
+// PAGE CONTENT
+// ============================================================
+
+.page-title {
+    font-size: $font-size-2xl;
+    margin-bottom: $spacing-lg;
+}
+
+.subcategory-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-xl;
+    padding: $spacing-sm 0;
+    border-top: 1px solid $color-border;
+    border-bottom: 1px solid $color-border;
+}
+
+.subcategory-link {
+    font-family: $font-ui;
+    font-size: $font-size-sm;
+    color: $color-text;
+    text-decoration: none;
+    white-space: nowrap;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+// Post listing on category pages
+.post-listing {
+    margin-top: $spacing-xl;
+}
+
+.post-item {
+    padding: $spacing-md 0;
+    border-bottom: 1px solid $color-border-light;
+
+    &:first-child {
+        border-top: 1px solid $color-border-light;
+    }
+
+    h2 {
+        font-size: $font-size-lg;
+        margin-top: 0;
+        margin-bottom: $spacing-xs;
+
+        a {
+            color: $color-text;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    time {
+        font-family: $font-ui;
+        font-size: $font-size-xs;
+        color: $color-text-muted;
+        display: block;
+        margin-bottom: $spacing-sm;
+    }
+
+    p {
+        font-size: $font-size-sm;
+        color: $color-text-muted;
+        margin-bottom: $spacing-sm;
+    }
+}
+
+// ============================================================
+// POST / ARTICLE
+// ============================================================
+
+.post-title {
+    font-size: $font-size-2xl;
+    margin-bottom: $spacing-sm;
+}
+
+.post-date {
+    font-family: $font-ui;
+    font-size: $font-size-sm;
+    color: $color-text-muted;
+    display: block;
+    margin-bottom: $spacing-xl;
+}
+
+.post-body {
+    p {
+        margin-bottom: $spacing-lg;
+    }
+
+    h2 {
+        margin-top: $spacing-xl;
+    }
+
+    a {
+        text-decoration: underline;
+        &:hover {
+            color: $color-text-muted;
+        }
+    }
+}
+
+.post-figure {
+    margin: $spacing-xl 0;
+
+    img {
+        width: 100%;
+        max-width: 278px;
+    }
+
+    figcaption {
+        font-family: $font-ui;
+        font-size: $font-size-xs;
+        color: $color-text-muted;
+        margin-top: $spacing-xs;
+    }
+}
+
+.post-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: $spacing-2xl;
+    padding-top: $spacing-lg;
+    border-top: 1px solid $color-border;
+    font-family: $font-ui;
+    font-size: $font-size-sm;
+
+    a {
+        color: $color-text;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__prev {
+        margin-right: auto;
+    }
+    &__next {
+        margin-left: auto;
+    }
+}
+
+// ============================================================
+// DAGENS HÅLLBARA LISTING
+// ============================================================
+
+.dagens-listing {
+    &__header {
+        margin-bottom: $spacing-xl;
+    }
+
+    &__title {
+        font-size: $font-size-xl;
+        margin-bottom: $spacing-xs;
+    }
+
+    &__subtitle {
+        font-family: $font-ui;
+        font-size: $font-size-sm;
+        color: $color-text-muted;
+    }
+}
+
+.dagens-item {
+    padding: $spacing-md 0;
+    border-bottom: 1px solid $color-border-light;
+
+    &:first-of-type {
+        border-top: 1px solid $color-border-light;
+    }
+
+    &__date {
+        font-family: $font-ui;
+        font-size: $font-size-sm;
+        font-weight: 600;
+        color: $color-text;
+        display: block;
+        margin-bottom: $spacing-xs;
+    }
+
+    &__title {
+        font-size: $font-size-base;
+        margin-bottom: $spacing-xs;
+    }
+
+    &__links {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-xs;
+    }
+
+    &__link {
+        font-family: $font-ui;
+        font-size: $font-size-sm;
+        color: $color-text;
+        &::before {
+            content: "→ ";
+        }
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+// ============================================================
+// FOOTER
+// ============================================================
+
+.site-footer {
+    background-color: #000;
+    margin-top: $spacing-2xl;
+}
+
+.site-footer__inner {
+    max-width: $max-width-wide;
+    margin: 0 auto;
+    padding: $spacing-md $content-padding $spacing-lg;
+}
+
+// Row 1: contact (left) + tagline (right)
+.site-footer__top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: $spacing-xl;
+    margin-bottom: $spacing-sm;
+}
+
+.site-footer__contact {
+    font-family: "Outfit", sans-serif;
+    font-size: $font-size-lg;
+    white-space: nowrap;
+
+    p {
+        margin: 0;
+    }
+
+    a {
+        color: #fff;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.site-footer__tagline {
+    font-family: "Outfit", sans-serif;
+    font-size: $font-size-sm;
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 250px;
+    text-align: right;
+
+    p {
+        margin: 0;
+    }
+}
+
+// Row 2: copyright (left)
+.site-footer__bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: $spacing-sm;
+}
+
+.site-footer__copy {
+    font-family: "Outfit", sans-serif;
+    font-size: $font-size-xs;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0;
+}
+
+// ============================================================
+// RESPONSIVE
+// ============================================================
+
+@media (max-width: $bp-tablet) {
+    .home-wrapper {
+        grid-template-columns: 1fr;
+        gap: $spacing-lg;
+    }
+
+    .home-sidebar {
+        order: -1;
+    }
+
+    .site-footer__top {
+        flex-direction: column;
+        gap: $spacing-sm;
+    }
+
+    .site-footer__tagline {
+        text-align: left;
+    }
+}
+
+@media (max-width: $bp-mobile) {
+    .nav-toggle {
+        display: flex;
+    }
+
+    .site-nav {
+        border-bottom: none;
+
+        &__inner {
+            display: none;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: $spacing-sm $content-padding $spacing-md;
+            gap: 0;
+        }
+
+        &--open .site-nav__inner {
+            display: flex;
+        }
+    }
+
+    .nav-link {
+        padding: $spacing-sm 0;
+    }
+
+    .nav-dropdown {
+        position: static;
+        border: none;
+        padding: 0 0 0 $spacing-md;
+
+        &__link {
+            padding: $spacing-xs 0;
+        }
+    }
+
+    .nav-item--has-dropdown:hover .nav-dropdown {
+        display: none;
+    }
+
+    .nav-item--open .nav-dropdown {
+        display: block;
+    }
+
+    h1 {
+        font-size: $font-size-2xl;
+    }
+    h2 {
+        font-size: $font-size-xl;
+    }
+
+    .site-header__inner {
+        min-height: 44px;
+    }
+
+    .page-wrapper {
+        padding: $spacing-lg $content-padding;
+    }
+
+    .post-nav {
+        flex-direction: column;
+        gap: $spacing-sm;
+    }
+}

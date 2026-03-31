@@ -1,0 +1,40 @@
+---
+layout: default
+---
+<div class="page-wrapper">
+  <article class="page-content">
+    {% if page.category %}
+    <nav class="breadcrumb" aria-label="Brödsmulor">
+      <a href="{{ page.category_url | default: '/' }}">{{ page.category }}</a>
+      <span class="breadcrumb-sep">→</span>
+      <span>{{ page.title }}</span>
+    </nav>
+    {% endif %}
+
+    <h1 class="page-title">{{ page.title }}</h1>
+
+    {% if page.subcategories %}
+    <nav class="subcategory-nav" aria-label="Underkategorier">
+      {% for sub in page.subcategories %}
+      <a href="{{ sub.url }}" class="subcategory-link">→ {{ sub.title }}</a>
+      {% endfor %}
+    </nav>
+    {% endif %}
+
+    {{ content }}
+
+    {% if page.show_posts %}
+    <section class="post-listing">
+      {% assign cat_posts = site.posts | where: "category", page.title %}
+      {% for post in cat_posts %}
+      <article class="post-item">
+        <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+        <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%-d %B %Y" }}</time>
+        {% if post.excerpt %}<p>{{ post.excerpt | strip_html | truncatewords: 30 }}</p>{% endif %}
+        <a href="{{ post.url | relative_url }}" class="arrow-link">läs mer</a>
+      </article>
+      {% endfor %}
+    </section>
+    {% endif %}
+  </article>
+</div>

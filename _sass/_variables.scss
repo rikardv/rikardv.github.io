@@ -1,0 +1,47 @@
+// Colors
+$color-bg:          #f7f7f7;
+$color-bg-white:    #ffffff;
+$color-text:        #1a1a1a;
+$color-text-muted:  #666666;
+$color-text-light:  #999999;
+$color-border:      #dddddd;
+$color-border-light:#eeeeee;
+$color-accent:      #1a1a1a;
+
+// Typography
+$font-serif:  'Crimson Text', Georgia, 'Times New Roman', serif;
+$font-sans:   system-ui, -apple-system, 'Segoe UI', sans-serif;
+$font-body:   $font-serif;
+$font-ui:     $font-serif;
+
+$font-size-base:  16px;
+$font-size-sm:    14px;
+$font-size-xs:    12px;
+$font-size-lg:    18px;
+$font-size-xl:    22px;
+$font-size-2xl:   28px;
+$font-size-3xl:   36px;
+
+$line-height-body: 1.7;
+$line-height-heading: 1.2;
+
+// Layout
+$max-width:         637px;
+$max-width-wide:    960px;
+$sidebar-width:     176px;
+$content-padding:   24px;
+
+// Spacing
+$spacing-xs:  4px;
+$spacing-sm:  8px;
+$spacing-md:  16px;
+$spacing-lg:  24px;
+$spacing-xl:  40px;
+$spacing-2xl: 64px;
+
+// Transitions
+$transition-fast: 150ms ease;
+
+// Breakpoints
+$bp-mobile: 480px;
+$bp-tablet: 768px;

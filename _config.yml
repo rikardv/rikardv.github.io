@@ -1,0 +1,48 @@
+title: Hållbarhetsarkitekten
+description: >-
+  Till dig som drömmer om eller är igång med att bygga eller renovera,
+  och vill göra det hållbart.
+email: hej@hallbarhetsarkitekten.se
+url: ""
+baseurl: ""
+lang: sv
+
+# Build settings
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Sass
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Permalinks
+permalink: /:categories/:year/:month/:day/:slug/
+
+# Encoding
+encoding: utf-8
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+
+# Navigation structure
+navigation:
+  - title: Startsida
+    url: /
+  - title: Hållbart Byggande
+    url: /hallbart-byggande/
+  - title: Material
+    url: /material/
+  - title: Husets Rum
+    url: /husets-rum/
+  - title: Konstruktionslösningar
+    url: /konstruktionslosningar/
+  - title: Husdesign
+    url: /husdesign/
+  - title: Stilguide
+    url: /stilguide/

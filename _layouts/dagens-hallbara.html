@@ -1,0 +1,34 @@
+---
+layout: default
+---
+<div class="page-wrapper">
+  <div class="dagens-listing">
+    <header class="dagens-listing__header">
+      <h1 class="dagens-listing__title">Dagens Hållbara</h1>
+      <p class="dagens-listing__subtitle">Aktuella artiklar, radioavsnitt och tips</p>
+    </header>
+
+    {% assign dagens_posts = site.posts | where: "category", "Dagens Hållbara" %}
+    {% for post in dagens_posts %}
+    <article class="dagens-item">
+      <time class="dagens-item__date" datetime="{{ post.date | date: '%Y-%m-%d' }}">
+        {{ post.date | date: "%-d %B %Y" }}
+      </time>
+      <h2 class="dagens-item__title">{{ post.title }}</h2>
+      {% if post.excerpt %}
+      <p>{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+      {% endif %}
+      <div class="dagens-item__links">
+        {% if post.external_url %}
+        <a href="{{ post.external_url }}" class="dagens-item__link" target="_blank" rel="noopener">{{ post.external_link_text | default: "Lyssna / läs" }}</a>
+        {% endif %}
+        <a href="{{ post.url | relative_url }}" class="dagens-item__link">läs mer</a>
+      </div>
+    </article>
+    {% endfor %}
+
+    {% if dagens_posts.size == 0 %}
+    <p>Inga inlägg ännu. Kom tillbaka snart!</p>
+    {% endif %}
+  </div>
+</div>
