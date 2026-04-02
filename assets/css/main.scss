@@ -193,7 +193,8 @@ p {
     white-space: nowrap;
     position: relative;
     z-index: 0;
-    j &:hover {
+
+    &:hover {
         color: #1e05ff;
         text-decoration: none;
     }
@@ -224,27 +225,32 @@ p {
 
 // Dropdown
 .nav-dropdown {
-    display: none;
+    display: flex;
     position: absolute;
     top: 100%;
     left: 0;
+    max-width: calc(100vw - var(--content-left, #{$content-padding}) - #{$content-padding});
     background-color: #f2ff9e;
     list-style: none;
-    padding: $spacing-sm 0;
-    min-width: 200px;
+    padding: $spacing-sm $spacing-md;
     z-index: 200;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: $spacing-xs $spacing-xl;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
 
     &__link {
         font-family: $font-serif;
         font-size: $font-size-base;
         color: #1e05ff;
         text-decoration: none;
-        display: block;
-        padding: $spacing-xs $spacing-md;
+        white-space: nowrap;
+        padding: $spacing-xs 0;
 
         &:hover {
-            background-color: #e8f584;
-            text-decoration: none;
+            text-decoration: underline;
         }
     }
 }
@@ -262,15 +268,24 @@ p {
         opacity: 0;
         transition: opacity $transition-fast;
     }
+}
 
-    &:hover::before {
+@media (hover: hover) and (pointer: fine) {
+    .nav-item--has-dropdown > .nav-link:hover::before {
         opacity: 1;
+    }
+
+    .nav-item--has-dropdown:hover .nav-dropdown {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
     }
 }
 
-.nav-item--has-dropdown:hover .nav-dropdown,
 .nav-item--open .nav-dropdown {
-    display: block;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
 }
 
 // Mobile hamburger
@@ -845,36 +860,12 @@ p {
         }
     }
 
-    .nav-item {
-        position: relative;
-    }
-
     .nav-link {
         padding: $spacing-xs $spacing-md 0 0;
     }
 
     .nav-dropdown {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        border: none;
-        padding: $spacing-sm 0;
-        background-color: #f2ff9e;
-        min-width: auto;
-        max-width: calc(100vw - 48px);
-        overflow-x: auto;
-
-        &__link {
-            padding: $spacing-xs $spacing-md;
-        }
-    }
-
-    .nav-item--has-dropdown:hover .nav-dropdown {
-        display: none !important;
-    }
-
-    .nav-item--open .nav-dropdown {
-        display: block !important;
+        padding: $spacing-sm $content-padding;
     }
 
     html {

@@ -86,12 +86,14 @@
     });
   });
 
-  document.addEventListener('click', e => {
+  function closeDropdownsIfOutside(e) {
     if (!e.target.closest('.nav-item--has-dropdown')) {
       document.querySelectorAll('.nav-item--open').forEach(el => {
         el.classList.remove('nav-item--open');
         el.querySelector('.nav-link').setAttribute('aria-expanded', 'false');
       });
     }
-  });
+  }
+  document.addEventListener('click', closeDropdownsIfOutside);
+  document.addEventListener('touchstart', closeDropdownsIfOutside, { passive: true });
 </script>
