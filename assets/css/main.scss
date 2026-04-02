@@ -18,6 +18,8 @@
 html {
     font-size: $font-size-base;
     scroll-behavior: smooth;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 body {
@@ -118,7 +120,6 @@ p {
 // LAYOUT
 // ============================================================
 
-
 .page-wrapper {
     padding: $spacing-xl $content-padding $spacing-xl
         var(--content-left, #{$content-padding});
@@ -130,8 +131,7 @@ p {
 // ============================================================
 
 .site-header {
-    position: sticky;
-    top: 0;
+    position: static;
     z-index: 100;
 }
 
@@ -300,8 +300,8 @@ p {
     padding: $spacing-xl $content-padding 0
         var(--content-left, #{$content-padding});
     display: grid;
-    grid-template-columns: $max-width $sidebar-width;
-    gap: $spacing-xl;
+    grid-template-columns: minmax(0, 1fr) minmax(200px, $sidebar-width);
+    gap: $spacing-2xl;
     align-items: start;
 }
 
@@ -334,6 +334,20 @@ p {
         font-size: $font-size-2xl;
         margin-top: 0;
         margin-bottom: $spacing-sm;
+    }
+
+    &__contact {
+        font-family: "Outfit", sans-serif;
+        font-size: $font-size-sm;
+        font-weight: 400;
+
+        strong {
+            font-weight: 700;
+        }
+
+        a strong {
+            font-weight: 500;
+        }
     }
 
     &--card {
@@ -720,7 +734,7 @@ p {
 .site-footer__contact {
     font-family: "Outfit", sans-serif;
     font-size: $font-size-lg;
-    font-weight: 800;
+    font-weight: 400;
     white-space: nowrap;
     color: #fff;
 
@@ -728,10 +742,18 @@ p {
         margin: 0;
     }
 
+    strong {
+        font-weight: 700;
+    }
+
     a {
         color: #fff;
         &:hover {
             text-decoration: underline;
+        }
+
+        strong {
+            font-weight: 600;
         }
     }
 }
@@ -781,16 +803,38 @@ p {
 }
 
 @media (max-width: $bp-mobile) {
+    .site-title {
+        font-size: $font-size-2xl;
+    }
+
+    .site-header {
+        position: static;
+    }
+
+    .home-wrapper {
+        max-width: 100%;
+        box-sizing: border-box;
+        padding: $spacing-xl $content-padding 0 $content-padding;
+        grid-template-columns: 1fr;
+        gap: $spacing-lg;
+    }
+
+    .sidebar-widget {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
     .nav-toggle {
-        display: flex;
+        display: none;
     }
 
     .site-nav {
         border-bottom: none;
 
         &__inner {
-            display: none;
-            flex-direction: column;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
             align-items: flex-start;
             padding: $spacing-sm $content-padding $spacing-md;
             gap: 0;
@@ -801,26 +845,40 @@ p {
         }
     }
 
+    .nav-item {
+        position: relative;
+    }
+
     .nav-link {
-        padding: $spacing-sm 0;
+        padding: $spacing-xs $spacing-md 0 0;
     }
 
     .nav-dropdown {
-        position: static;
+        position: absolute;
+        top: 100%;
+        left: 0;
         border: none;
-        padding: 0 0 0 $spacing-md;
+        padding: $spacing-sm 0;
+        background-color: #f2ff9e;
+        min-width: auto;
+        max-width: calc(100vw - 48px);
+        overflow-x: auto;
 
         &__link {
-            padding: $spacing-xs 0;
+            padding: $spacing-xs $spacing-md;
         }
     }
 
     .nav-item--has-dropdown:hover .nav-dropdown {
-        display: none;
+        display: none !important;
     }
 
     .nav-item--open .nav-dropdown {
-        display: block;
+        display: block !important;
+    }
+
+    html {
+        font-size: 16px;
     }
 
     h1 {
@@ -829,6 +887,9 @@ p {
     h2 {
         font-size: $font-size-xl;
     }
+    h3 {
+        font-size: $font-size-lg;
+    }
 
     .site-header__inner {
         min-height: 44px;
@@ -836,6 +897,8 @@ p {
 
     .page-wrapper {
         padding: $spacing-lg $content-padding;
+        max-width: 100%;
+        box-sizing: border-box;
     }
 
     .post-nav {
