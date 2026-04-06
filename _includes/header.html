@@ -50,12 +50,33 @@
     if (!light) return;
     const contentLeft = Math.round(light.getBoundingClientRect().right);
     const minPad = 24;
-    const maxContentWidth = 637;
+    const maxContentWidth = 637 + 52 + 240;
     // Natural centering offset for the main content column
     const naturalLeft = Math.max(minPad, Math.round((window.innerWidth - maxContentWidth) / 2));
     // Grow with centering until we hit the alignment point, then lock
     const offset = Math.min(naturalLeft, contentLeft);
     document.documentElement.style.setProperty('--content-left', offset + 'px');
+
+    // Set max width for content to match the right edge of the first row of navbar items
+    const navItems = document.querySelectorAll('.nav-item');
+    if (navItems.length > 0) {
+      const firstItemTop = navItems[0].getBoundingClientRect().top;
+      let lastItemOnFirstRow = navItems[0];
+
+      // Find the rightmost item on the first row (same vertical position as first item)
+      for (const item of navItems) {
+        if (Math.abs(item.getBoundingClientRect().top - firstItemTop) < 5) {
+          lastItemOnFirstRow = item;
+        } else {
+          break;
+        }
+      }
+
+      const lastItemRight = Math.round(lastItemOnFirstRow.getBoundingClientRect().right);
+      const contentPadding = 24;
+      const maxWidth = lastItemRight + contentPadding;
+      document.documentElement.style.setProperty('--nav-content-width', maxWidth + 'px');
+    }
   }
   document.fonts.ready.then(setContentLeft);
   window.addEventListener('resize', setContentLeft);
@@ -70,6 +91,8 @@
     });
   }
 
+  const supportsHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
   document.querySelectorAll('.nav-item--has-dropdown .nav-link').forEach(link => {
     link.addEventListener('click', e => {
       const item = link.closest('.nav-item--has-dropdown');
@@ -78,7 +101,7 @@
         el.classList.remove('nav-item--open');
         el.querySelector('.nav-link').setAttribute('aria-expanded', 'false');
       });
-      if (!isOpen) {
+      if (!supportsHover && !isOpen) {
         e.preventDefault();
         item.classList.add('nav-item--open');
         link.setAttribute('aria-expanded', 'true');

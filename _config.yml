@@ -34,15 +34,15 @@ exclude:
 navigation:
   - title: Startsida
     url: /
-  - title: Hållbart Byggande
-    url: /hallbart-byggande/
   - title: Material
     url: /material/
+  - title: Hållbart Byggande
+    url: /hallbart-byggande/
+  - title: Stilguide
+    url: /stilguide/
   - title: Husets Rum
     url: /husets-rum/
   - title: Konstruktionslösningar
     url: /konstruktionslosningar/
   - title: Husdesign
     url: /husdesign/
-  - title: Stilguide
-    url: /stilguide/

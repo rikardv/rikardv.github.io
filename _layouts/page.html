@@ -23,6 +23,48 @@ layout: default
 
     {{ content }}
 
+    {% if page.category_url %}
+      {% assign siblings = "" | split: "" %}
+      {% for p in site.pages %}
+        {% if p.url contains page.category_url and p.url != page.category_url %}
+          {% assign siblings = siblings | push: p %}
+        {% endif %}
+      {% endfor %}
+      {% assign siblings = siblings | sort: "title" %}
+
+      {% assign page_prev = nil %}
+      {% assign page_next = nil %}
+      {% assign found_page = false %}
+      {% for p in siblings %}
+        {% if found_page %}
+          {% unless page_next %}
+            {% assign page_next = p %}
+          {% endunless %}
+        {% else %}
+          {% if p.url == page.url %}
+            {% assign found_page = true %}
+          {% else %}
+            {% assign page_prev = p %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+
+      {% if page_prev or page_next %}
+      <nav class="post-nav" aria-label="Sidnavigering">
+        {% if page_prev %}
+        <a href="{{ page_prev.url | relative_url }}" class="post-nav__prev">
+          Föregående ← {{ page_prev.title }}
+        </a>
+        {% endif %}
+        {% if page_next %}
+        <a href="{{ page_next.url | relative_url }}" class="post-nav__next">
+          Nästa → {{ page_next.title }}
+        </a>
+        {% endif %}
+      </nav>
+      {% endif %}
+    {% endif %}
+
     {% if page.show_posts %}
     <section class="post-listing">
       {% assign cat_posts = site.posts | where: "category", page.title %}

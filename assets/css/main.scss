@@ -123,7 +123,7 @@ p {
 .page-wrapper {
     padding: $spacing-xl $content-padding $spacing-xl
         var(--content-left, #{$content-padding});
-    max-width: calc(var(--content-left, #{$content-padding}) + #{$max-width});
+    max-width: var(--nav-content-width, calc(var(--content-left, #{$content-padding}) + #{$max-width} + #{$content-padding}));
 }
 
 // ============================================================
@@ -131,8 +131,10 @@ p {
 // ============================================================
 
 .site-header {
-    position: static;
+    position: sticky;
+    top: 0;
     z-index: 100;
+    width: 100%;
 }
 
 // Row 1: black title bar
@@ -218,6 +220,10 @@ p {
         font-style: italic;
     }
 
+    &--husets-rum {
+        font-style: italic;
+    }
+
     /* &--active {
         text-decoration: underline;
     } */
@@ -229,7 +235,9 @@ p {
     position: absolute;
     top: 100%;
     left: 0;
-    max-width: calc(100vw - var(--content-left, #{$content-padding}) - #{$content-padding});
+    max-width: calc(
+        100vw - var(--content-left, #{$content-padding}) - #{$content-padding}
+    );
     background-color: #f2ff9e;
     list-style: none;
     padding: $spacing-sm $spacing-md;
@@ -262,7 +270,7 @@ p {
     &::before {
         content: "";
         position: absolute;
-        inset: 1px 1px 1px 1px;
+        inset: 1px calc(#{$spacing-xl} - #{$spacing-xs}) 1px #{$spacing-xs};
         background-color: #f2ff9e;
         z-index: -1;
         opacity: 0;
@@ -318,6 +326,7 @@ p {
     grid-template-columns: minmax(0, 1fr) minmax(200px, $sidebar-width);
     gap: $spacing-2xl;
     align-items: start;
+    max-width: var(--nav-content-width, calc(var(--content-left, #{$content-padding}) + #{$max-width} + #{$spacing-2xl} + #{$sidebar-width} + #{$content-padding}));
 }
 
 .home-main {
