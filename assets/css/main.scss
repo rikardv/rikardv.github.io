@@ -375,7 +375,7 @@ p {
         padding: $spacing-md;
 
         p {
-            font-weight: 600;
+            font-weight: 400;
         }
     }
 }
@@ -395,6 +395,10 @@ p {
     &__textarea {
         width: 100%;
         min-height: 65px;
+
+        &[type="email"] {
+            min-height: unset;
+        }
         padding: $spacing-sm;
         border: 1px solid $color-border;
         background-color: $color-bg-white;

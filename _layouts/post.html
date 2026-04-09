@@ -1,95 +1,158 @@
 ---
 layout: default
 ---
+
 <div class="home-wrapper">
-  <div class="home-main">
-    <article class="post-content">
-      <nav class="breadcrumb" aria-label="Brödsmulor">
-        {% if page.category %}
-        <a href="/{{ page.category | slugify }}/">{{ page.category }}</a>
-        <span class="breadcrumb-sep">→</span>
-        {% endif %}
-        <span>{{ page.title }}</span>
-      </nav>
+    <div class="home-main">
+        <article class="post-content">
+            <nav class="breadcrumb" aria-label="Brödsmulor">
+                {% if page.category %}
+                <a href="/{{ page.category | slugify }}/"
+                    >{{ page.category }}</a
+                >
+                <span class="breadcrumb-sep">→</span>
+                {% endif %}
+                <span>{{ page.title }}</span>
+            </nav>
 
-      <h1 class="post-title">{{ page.title }}</h1>
+            <h1 class="post-title">{{ page.title }}</h1>
 
-      {% if page.date %}
-      <time class="post-date" datetime="{{ page.date | date: '%Y-%m-%d' }}">
-        {{ page.date | date: "%-d %B %Y" }}
-      </time>
-      {% endif %}
+            {% if page.date %}
+            <time
+                class="post-date"
+                datetime="{{ page.date | date: '%Y-%m-%d' }}"
+            >
+                {{ page.date | date: "%-d %B %Y" }}
+            </time>
+            {% endif %}
 
-      <div class="post-body">
-        {{ content }}
-      </div>
+            <div class="post-body">{{ content }}</div>
 
-      {% if page.image %}
-      <figure class="post-figure">
-        <img src="{{ page.image | relative_url }}" alt="{{ page.image_caption | default: page.title }}">
-        {% if page.image_caption %}
-        <figcaption>{{ page.image_caption }}</figcaption>
-        {% endif %}
-      </figure>
-      {% endif %}
-    </article>
+            {% if page.image %}
+            <figure class="post-figure">
+                <img
+                    src="{{ page.image | relative_url }}"
+                    alt="{{ page.image_caption | default: page.title }}"
+                />
+                {% if page.image_caption %}
+                <figcaption>{{ page.image_caption }}</figcaption>
+                {% endif %}
+            </figure>
+            {% endif %}
+        </article>
 
-    <section class="home-section home-section--card">
-      <p>Har du tankar kring det du läst, skicka gärna ett meddelande om du har tips, tankar eller frågor om innehållet.</p>
-      <form class="contact-form" action="https://formspree.io/f/placeholder" method="POST">
-        <label class="contact-form__label" for="message">Meddelande</label>
-        <textarea class="contact-form__textarea" id="message" name="message" placeholder="Skicka ett meddelande...."></textarea>
-        <button type="submit" class="contact-form__submit">Skicka</button>
-      </form>
-    </section>
+        <section class="home-section home-section--card">
+            <p id="contact-intro">
+                Har du tankar kring det du läst, skicka gärna ett meddelande om
+                du har tips, tankar eller frågor om innehållet.
+            </p>
+            <form
+                class="contact-form"
+                id="contact-form"
+                action="https://formspree.io/f/xbdpevnj"
+                method="POST"
+            >
+                <label class="contact-form__label" for="email">Email</label>
+                <input class="contact-form__textarea" type="email" id="email" name="email" placeholder="din@email.se" />
+                <label class="contact-form__label" for="message"
+                    >Meddelande</label
+                >
+                <textarea
+                    class="contact-form__textarea"
+                    id="message"
+                    name="message"
+                    placeholder="Skicka ett meddelande...."
+                ></textarea>
+                <button type="submit" class="contact-form__submit">
+                    Skicka
+                </button>
+            </form>
+            <p class="contact-form__confirmation" id="contact-confirmation" style="display:none">
+                Tack! Ditt meddelande har skickats.
+            </p>
+        </section>
 
-    <nav class="post-nav" aria-label="Artikelnavigering">
-      {% if page.previous.url %}
-      <a href="{{ page.previous.url | relative_url }}" class="post-nav__prev">
-        Föregående ← {{ page.previous.title }}
-      </a>
-      {% endif %}
-      {% if page.next.url %}
-      <a href="{{ page.next.url | relative_url }}" class="post-nav__next">
-        Nästa → {{ page.next.title }}
-      </a>
-      {% endif %}
-    </nav>
-  </div>
-
-  <aside class="home-sidebar">
-    <div class="sidebar-widget">
-      <p class="sidebar-widget__title">Dagens hållbara</p>
-      <ul class="sidebar-list">
-        {% assign dagens_posts = site.posts | where: "category", "Dagens Hållbara" %}
-        {% for post in dagens_posts %}
-        <li class="sidebar-list__item{% if forloop.index > 3 %} sidebar-list__item--hidden{% endif %}">
-          <span class="sidebar-list__title">{{ post.title | truncatewords: 8 }}</span>
-          <a href="{{ post.url | relative_url }}" class="sidebar-list__link">läs mer</a>
-        </li>
-        {% endfor %}
-        {% if dagens_posts.size == 0 %}
-        <li class="sidebar-list__item">
-          <span class="sidebar-list__title">Radioavsnitt om hållbart byggande</span>
-          <a href="/dagens-hallbara/" class="sidebar-list__link">läs mer</a>
-        </li>
-        {% endif %}
-      </ul>
-      {% if dagens_posts.size > 3 %}
-      <a href="#" class="sidebar-load-more" id="sidebar-load-more">ladda fler</a>
-      {% endif %}
+        <nav class="post-nav" aria-label="Artikelnavigering">
+            {% if page.previous.url %}
+            <a
+                href="{{ page.previous.url | relative_url }}"
+                class="post-nav__prev"
+            >
+                Föregående ← {{ page.previous.title }}
+            </a>
+            {% endif %} {% if page.next.url %}
+            <a href="{{ page.next.url | relative_url }}" class="post-nav__next">
+                Nästa → {{ page.next.title }}
+            </a>
+            {% endif %}
+        </nav>
     </div>
-  </aside>
+
+    <aside class="home-sidebar">
+        <div class="sidebar-widget">
+            <p class="sidebar-widget__title">Dagens hållbara</p>
+            <ul class="sidebar-list">
+                {% assign dagens_posts = site.posts | where: "category", "Dagens
+                Hållbara" %} {% for post in dagens_posts %}
+                <li
+                    class="sidebar-list__item{% if forloop.index > 3 %} sidebar-list__item--hidden{% endif %}"
+                >
+                    <span class="sidebar-list__title"
+                        >{{ post.title | truncatewords: 8 }}</span
+                    >
+                    <a
+                        href="{{ post.url | relative_url }}"
+                        class="sidebar-list__link"
+                        >läs mer</a
+                    >
+                </li>
+                {% endfor %} {% if dagens_posts.size == 0 %}
+                <li class="sidebar-list__item">
+                    <span class="sidebar-list__title"
+                        >Radioavsnitt om hållbart byggande</span
+                    >
+                    <a href="/dagens-hallbara/" class="sidebar-list__link"
+                        >läs mer</a
+                    >
+                </li>
+                {% endif %}
+            </ul>
+            {% if dagens_posts.size > 3 %}
+            <a href="#" class="sidebar-load-more" id="sidebar-load-more"
+                >ladda fler</a
+            >
+            {% endif %}
+        </div>
+    </aside>
 </div>
 
 <script>
-  const loadMore = document.getElementById('sidebar-load-more');
-  if (loadMore) {
-    loadMore.addEventListener('click', function(e) {
-      e.preventDefault();
-      const list = this.closest('.sidebar-widget').querySelector('.sidebar-list');
-      list.classList.add('sidebar-list--expanded');
-      this.style.display = 'none';
-    });
-  }
+    const form = document.getElementById("contact-form");
+    if (form) {
+        form.addEventListener("submit", async function (e) {
+            e.preventDefault();
+            const data = new FormData(form);
+            const response = await fetch(form.action, {
+                method: "POST",
+                body: data,
+                headers: { Accept: "application/json" },
+            });
+            if (response.ok) {
+                form.style.display = "none";
+                document.getElementById("contact-intro").style.display = "none";
+                document.getElementById("contact-confirmation").style.display = "block";
+            }
+        });
+    }
+
+    const loadMore = document.getElementById("sidebar-load-more");
+    if (loadMore) {
+        loadMore.addEventListener("click", function (e) {
+            e.preventDefault();
+            const list =
+                this.closest(".sidebar-widget").querySelector(".sidebar-list");
+            list.classList.add("sidebar-list--expanded");
+            this.style.display = "none";
+        });
+    }
 </script>
