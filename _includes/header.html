@@ -103,6 +103,14 @@
       });
       if (!supportsHover && !isOpen) {
         e.preventDefault();
+        const dropdown = item.querySelector('.nav-dropdown');
+        if (dropdown) {
+          const linkRect = link.getBoundingClientRect();
+          const nav = document.querySelector('.site-nav');
+          const navLeft = nav ? nav.getBoundingClientRect().left : 0;
+          const arrowLeft = Math.round(linkRect.left + linkRect.width / 2 - navLeft - 16);
+          dropdown.style.setProperty('--arrow-left', arrowLeft + 'px');
+        }
         item.classList.add('nav-item--open');
         link.setAttribute('aria-expanded', 'true');
       }
