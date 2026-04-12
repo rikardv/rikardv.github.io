@@ -11,17 +11,36 @@ layout: default
         <section class="home-section">
             <h2>Vad är en hållbarhetsarkitekt?</h2>
             <p>
-                För en mer hållbar värld behöver vi planera in hållbara principer, tidigt. En hållbarhetsarkitekt designar för en bättre nutid och framtiden. I en sammankopplad värld räcker det inte längre att lösa sina egna problem. Vi behöver se helheten, förstå sambanden och ta ansvar för konsekvenserna av de beslut vi fattar idag. Det är precis vad hållbarhetsarkitekten behöver göra.
-Hållbarhetsarkitekten arbetar med miljön och människan. Genom att se till hela systemet identifiera hur det vi bygger och skapar kan bli långsiktigt och rättvist. Hållbarhetsarkitekten undersöker om lösningen är hållbar på lång sikt, eller om den skapar nya problem längre fram? Tar lösningen hänsyn till andra människor och vår planet och kan det skapa positiva effekter?
-En viktig del för hållbarhetsarkitekten är att dela och bygga kunskap, samarbete och kreativitet. På så vis kan hållbarhetsarkitekten skapa attraktiva och inspirerande lösningar som känns bra i magen, är vackra och som har berättelse.  
-
+                För en mer hållbar värld behöver vi planera in hållbara
+                principer, tidigt. En hållbarhetsarkitekt designar för en bättre
+                nutid och framtiden. I en sammankopplad värld räcker det inte
+                längre att lösa sina egna problem. Vi behöver se helheten,
+                förstå sambanden och ta ansvar för konsekvenserna av de beslut
+                vi fattar idag. Det är precis vad hållbarhetsarkitekten behöver
+                göra. Hållbarhetsarkitekten arbetar med miljön och människan.
+                Genom att se till hela systemet identifiera hur det vi bygger
+                och skapar kan bli långsiktigt och rättvist.
+                Hållbarhetsarkitekten undersöker om lösningen är hållbar på lång
+                sikt, eller om den skapar nya problem längre fram? Tar lösningen
+                hänsyn till andra människor och vår planet och kan det skapa
+                positiva effekter? En viktig del för hållbarhetsarkitekten är
+                att dela och bygga kunskap, samarbete och kreativitet. På så vis
+                kan hållbarhetsarkitekten skapa attraktiva och inspirerande
+                lösningar som känns bra i magen, är vackra och som har
+                berättelse.
             </p>
         </section>
 
         <section class="home-section">
             <h2>Om Hållbarhetsarkitekten</h2>
             <p>
-                Jag som skriver här är Byggnads- och hållbarhetsingenjör och är aktiv på svenska östkusten, i Stockholmsområdet. Jag renoverar och bygger själv en sportstuga som jag planerar att skriva ofta om i dagens hållbara. Jag har skapat den här sidan för att dela med mig av den kunskap jag tar till mig, och för att jag ser ett behov av att öka kunskapen kring alternativen och valen man gör när man bygger ett hus. 
+                Jag som skriver här är Byggnads- och hållbarhetsingenjör och är
+                aktiv på svenska östkusten, i Stockholmsområdet. Jag renoverar
+                och bygger själv en sportstuga som jag planerar att skriva ofta
+                om i dagens hållbara. Jag har skapat den här sidan för att dela
+                med mig av den kunskap jag tar till mig, och för att jag ser ett
+                behov av att öka kunskapen kring alternativen och valen man gör
+                när man bygger ett hus.
             </p>
             <p class="home-section__contact">
                 <strong>Kontakt:</strong>
@@ -30,42 +49,49 @@ En viktig del för hållbarhetsarkitekten är att dela och bygga kunskap, samarb
                 >
             </p>
         </section>
-
     </div>
 
     <aside class="home-sidebar">
         <div class="sidebar-widget">
             <p class="sidebar-widget__title">Dagens hållbara</p>
             <ul class="sidebar-list">
-                {% assign dagens_posts = site.posts | where: "category", "Dagens Hållbara" %}
-                {% for post in dagens_posts %}
-                <li class="sidebar-list__item{% if forloop.index > 3 %} sidebar-list__item--hidden{% endif %}">
-                    <span class="sidebar-list__title">{{ post.title | truncatewords: 8 }}</span>
-                    <a href="{{ post.url | relative_url }}" class="sidebar-list__link">läs mer</a>
+                {% assign dagens_posts = site.posts | where: "category", "Dagens Hållbara" %} {% for post in dagens_posts %}
+                <li
+                    class="sidebar-list__item{% if forloop.index > 3 %} sidebar-list__item--hidden{% endif %}"
+                >
+                    <span class="sidebar-list__title"
+                        >{{ post.title | truncatewords: 8 }}</span
+                    >
+                    <a
+                        href="{{ post.url | relative_url }}"
+                        class="sidebar-list__link"
+                        >läs mer</a
+                    >
                 </li>
-                {% endfor %}
-                {% if dagens_posts.size == 0 %}
+                {% endfor %} {% if dagens_posts.size == 0 %}
                 <li class="sidebar-list__item">
-                    <span class="sidebar-list__title">Radioavsnitt om hållbart byggande</span>
-                    <a href="/dagens-hallbara/" class="sidebar-list__link">läs mer</a>
+                    <span class="sidebar-list__title">Inga poster ännu</span>
                 </li>
                 {% endif %}
             </ul>
             {% if dagens_posts.size > 3 %}
-            <a href="#" class="sidebar-load-more" id="sidebar-load-more">ladda fler</a>
+            <a href="#" class="sidebar-load-more" id="sidebar-load-more"
+                >ladda fler</a
+            >
             {% endif %}
         </div>
     </aside>
 </div>
 
 <script>
-  const loadMore = document.getElementById('sidebar-load-more');
-  if (loadMore) {
-    loadMore.addEventListener('click', function(e) {
-      e.preventDefault();
-      const list = this.closest('.sidebar-widget').querySelector('.sidebar-list');
-      list.classList.add('sidebar-list--expanded');
-      this.style.display = 'none';
-    });
-  }
+    const loadMore = document.getElementById("sidebar-load-more");
+    if (loadMore) {
+        loadMore.addEventListener("click", function (e) {
+            e.preventDefault();
+            const list =
+                this.closest(".sidebar-widget").querySelector(".sidebar-list");
+            list.classList.add("sidebar-list--expanded");
+            this.style.display = "none";
+        });
+    }
 </script>

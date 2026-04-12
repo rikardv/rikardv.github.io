@@ -7,9 +7,7 @@ layout: default
         <article class="post-content">
             <nav class="breadcrumb" aria-label="Brödsmulor">
                 {% if page.category %}
-                <a href="/{{ page.category | slugify }}/"
-                    >{{ page.category }}</a
-                >
+                <span>{{ page.category }}</span>
                 <span class="breadcrumb-sep">→</span>
                 {% endif %}
                 <span>{{ page.title }}</span>
@@ -92,8 +90,7 @@ layout: default
         <div class="sidebar-widget">
             <p class="sidebar-widget__title">Dagens hållbara</p>
             <ul class="sidebar-list">
-                {% assign dagens_posts = site.posts | where: "category", "Dagens
-                Hållbara" %} {% for post in dagens_posts %}
+                {% assign dagens_posts = site.posts | where: "category", "Dagens Hållbara" %} {% for post in dagens_posts %}
                 <li
                     class="sidebar-list__item{% if forloop.index > 3 %} sidebar-list__item--hidden{% endif %}"
                 >
@@ -108,12 +105,7 @@ layout: default
                 </li>
                 {% endfor %} {% if dagens_posts.size == 0 %}
                 <li class="sidebar-list__item">
-                    <span class="sidebar-list__title"
-                        >Radioavsnitt om hållbart byggande</span
-                    >
-                    <a href="/dagens-hallbara/" class="sidebar-list__link"
-                        >läs mer</a
-                    >
+                    <span class="sidebar-list__title">Inga poster ännu</span>
                 </li>
                 {% endif %}
             </ul>
