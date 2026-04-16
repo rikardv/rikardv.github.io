@@ -1,5 +1,5 @@
 ---
-title: Dörrar
+title: Lerhus
 category: Husdesign
 category_url: /husdesign/
 layout: page
