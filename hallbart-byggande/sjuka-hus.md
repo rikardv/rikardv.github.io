@@ -1,6 +1,6 @@
 ---
 title: Sjuka hus
 category: Hållbart byggande
-category_url: /sjuka-hus/
+category_url: /hallbart-byggande/
 layout: page
 ---
