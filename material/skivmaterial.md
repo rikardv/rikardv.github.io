@@ -1,5 +1,5 @@
 ---
-title: Trä, lera och växter
+title: Skivmaterial
 category: Material
 category_url: /material/
 layout: page
