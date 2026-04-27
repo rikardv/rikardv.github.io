@@ -1,5 +1,5 @@
 ---
-title: Plaster & oljor
+title: Färger
 category: Material
 category_url: /material/
 layout: page
