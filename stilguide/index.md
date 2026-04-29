@@ -1,25 +1,16 @@
 ---
 layout: page
 title: Stilguide
-description: Typsnitt, färger och designprinciper för Hållbarhetsarkitekten.
+description: Hållbar estetik.
 ---
-# Stilguide
+# Hållbar estetik
 
-Den här sidan dokumenterar designspråket för Hållbarhetsarkitekten.
+Det går inte att bevisa att en byggnad är vacker på samma sätt som man bevisar ett matematiskt påstående. Ändå känner vi instinktivt att det finns en skillnad mellan något genomtänkt och något som bara blev. Det är lättare att uppskatta lösningar som bär spår av omsorg, material som är valt för en anledning, proportioner som är avvägda, detaljer som gör helheten rikare. Hållbar estetetik handlar om att något uppenbarligen har kostat någon tid och tanke.
 
-## Färger
+Det vi upplever som personlig smak är sällan helt personlig. Subjektiv smak formas av kulturen vi vuxit upp i, av bilderna vi sett, byggnaderna vi passerat, av vad det vi ser reprenterar. Estetik är på det sättet en sorts nutidsbeskrivning. 
 
-- **Bakgrund:** `#f7f7f7`
-- **Text:** `#1a1a1a`
-- **Dämpad text:** `#666666`
-- **Kantlinjer:** `#dddddd`
+Det mest hållbara huset är det som redan byggts var det någon som sa och visst finns det sanning i det, varje rivning innebär en förlust av bundet material, inbyggd energi och ofta också av en faktisk och estetisk kvalitet som är svår att återskapa. Byggnadsvård och restaurering har ökat i popularitet, men intresset riktas främst mot den äldre bebyggelsen, hus uppförda före sextiotalet, och särskilt mot det som brukar kallas klassisk arkitektur.
 
-## Typografi
+En anledning till detta och till byggnadsvårdens förening med ekologiskt byggande är att de äldre byggnaderba ofta är uppförda med material och metoder som i många avseenden var sundare, för både människor och miljön. Efterkrigstiden förde med sig en rad problem som fortfarande präglar miljonprogrammets och rekordårens bestånd: asbest, klorerade träskyddsmedel, plastmaterial med kort livslängd och dålig åldringsförmåga. 
 
-- **Brödtext:** Georgia (serif)
-- **Gränssnitt/navigation:** System-ui (sans-serif)
-
-## Designprinciper
-
-Minimalismisk, redaktionell formgivning med fokus på läsbarhet och innehåll.
-Pilar (`→`) används genomgående som visuella ledare för navigering och länkar.
+När en byggnad redan finns på platsen finns också ett arv att förhålla sig till. Skalan är där, linjerna och färgerna. Det finns en historia att läsa av och hämta inspiration ifrån. Det är ett annat utgångsläge än att börja från ett tomt papper. När det gäller helt nya hus har i tvåtusentalet ett mer varierat designspråk. Det finns inte längre ett lika tydligt stilideal. För nybyggda hus handlar hållbar estetik därför om att se till vilka hus finns i närheten? Vilka material har använts på den platsen genom tiderna? Att förstå platsens historia är ett bra första steg i att hitta rätt uttryck för huset.
