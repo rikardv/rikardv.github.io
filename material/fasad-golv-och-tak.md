@@ -1,5 +1,5 @@
 ---
-title: Fasad, Golv och Tak
+title: Fasad, golv och tak
 category: Material
 category_url: /material/
 layout: page
