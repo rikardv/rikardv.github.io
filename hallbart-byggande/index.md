@@ -5,15 +5,15 @@ description: Allt om hållbart byggande – från bygglogistik till cirkulära k
 show_posts: true
 ---
 # Vad är Hållbart byggande 
-Är välisolerade nettonollhus, giftfria material eller traditionellt hantverksbyggande, hållbart byggande? Svaret är ja, allt detta kan vara former av hållbart byggande. Men de kan också stå i konflikt med varandra, den spänningen gör det svårt att reducera hållbart byggande till en enkel definition.
+Är välisolerade nettonollhus eller hus byggda på minimala resurser hållbart byggande? Ja, båda är former av hållbart byggande, men argumenten kan stå i konflikt mot varandra, den spänningen gör det svårt att reducera hållbart byggande till en enkel definition. Både uppförandet och användandet har båda en påverkan på naturen, klimatet, ekonomin och människan. Vid uppbyggnaden av ett hus koncentreras utsläpp och inverkan på natur och ekonomi till en kort med intensiv period medans det under användandet har finns förutsättningar, exempelvis värmeeffektiviteten, satta i uppförandet som långsiktigt påverkar klimat, människa och miljö.  
 
 ## Ekonomisk hållbarhet
 Husprojekt kanske livets största investeringen. Att bygga eller att ta hand om ett hus är förenat med många kostnader och i de flestas innebär det även lån från banken. Ekonomisk hållbarhet handlar om att bygga klokt i förhållande till husets värde, dess attraktivitet och ägarens verkliga livssituation. En investering som inte går att återfå blir sällan hållbar. 
-Lika viktigt är att huset går att förvalta över tid. Driftskostnader och underhållsbehov måste vara rimliga och med ändrade behov behöver det vara anpassningsbart. Ett hus som inte fyller någon funktion är inte heller hållbart. Herrgårdar, prästgårdar, gamla skolor och industribyggnader vittnar om ett samhälle som byggde för en befolkning och en ekonomi som sedan försvann. Kvar står vackra fasaderna som ingen längre förvaltar.
-
-Kika på ArkDes utställningat om Ödehus. 
+Ett hus som inte fyller någon funktion är inte heller hållbart. Det är hållbart om huset går att förvalta ochh uttnyttjas över lång tid. Driftskostnader och underhållsbehov måste vara rimliga över tid, ett hållbart hus kan anpassa sig efter nya behov i framtiden.  Herrgårdar, prästgårdar, gamla skolor och industribyggnader vittnar om ett samhälle som byggde för en befolkning och en ekonomi som sedan försvann. Kvar står vackra fasaderna och fullt av värden som blir outtnyttjade.
 
 Sverige har ett beydande värden i redan byggt bestånd, och att hitta metoder för att utvinna dessa värden kan vara värdeskapande, både för sin egen del, men också miljömässigt och samhällsekonomiskt. 
+
+Kika på ArkDes utställningat om Ödehus. 
 
 ## Ekologisk hållbarhet
 Materialen som omger oss påverkar luften vi andas och ytorna vi rör vid. Vissa material påverkar inte oss, men påverkar naturen, havet eller klimatet. 
