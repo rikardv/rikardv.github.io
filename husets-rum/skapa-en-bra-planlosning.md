@@ -1,5 +1,5 @@
 ---
-title: Skapa en bra planlösning
+title: En bra planlösning
 category: Husets rum
 category_url: /husets-rum/
 layout: page
