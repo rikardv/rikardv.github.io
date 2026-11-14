@@ -7,6 +7,7 @@ $color-text-light:  #999999;
 $color-border:      #dddddd;
 $color-border-light:#eeeeee;
 $color-accent:      #1a1a1a;
+$color-link:        #1e05ff;
 
 // Typography
 $font-serif:  'Crimson Text', Georgia, 'Times New Roman', serif;
@@ -30,6 +31,8 @@ $max-width:         637px;
 $max-width-wide:    960px;
 $sidebar-width:     240px;
 $content-padding:   24px;
+$logo-size:         150px;
+$content-left:      170px; // just inside the logo's right edge
 
 // Spacing
 $spacing-xs:  3px;

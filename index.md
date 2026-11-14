@@ -1,8 +1,11 @@
 ---
 layout: home
-title: Startsida
 ---
 
-Den här sidan riktar sig till dig som drömmer om att bygga nytt eller bygga om, och vill göra det hållbart. Här kan du hitta andra perspektiv, goda exempel och regelmässiga möjligheter för ett sunt byggande. Målet är att påverka branschen mot ett genomtänkt byggande, att stötta den som vill bygga bättre för både människa och miljö.
+God arkitektur tar hänsyn till människor, djur och natur.
 
-Här fylls det kontinuerligt på med beskrivningar på typlösningar för alternativa byggmetoder och icke-partisk information om egenskaper och risker hos olika byggmaterial. Här ges vägledning och inspiration för hur bostäder kan utformas för att vara miljömässsigt, samhällsmässigt och ekonomisktt mer hållbara än det vedertagna alternativet – oavsett om det handlar om ett befintligt hus, att bygga nytt eller att bygga annorlunda.
+Hållbarhetsarkitekten drivs av mig, där jag tillsammans med partnerföretag bedriver tjänster inom design, coachning och kontroll av hållbart byggande.
+
+I mitt arbete finns en grundtanke om respekt för karaktären och själen av ett hus. Målet är att bidra till en värld med exceptionella hus, utförda med minimal påverkan på planeten.
+
+Genom strategisk utveckling av byggbranschen verkar hållbarhetsarkitekten för ett långsiktigt ekologiskt & cirkulärt byggande.

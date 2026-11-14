@@ -4,98 +4,95 @@ layout: default
 
 <div class="home-wrapper">
     <div class="home-main">
-        <h1 class="home-title">Välkommen till Hållbarhetsarkitekten</h1>
-
         <div class="home-intro">{{ content }}</div>
 
-        <section class="home-section">
-            <h2>Vad är en hållbarhetsarkitekt?</h2>
-            <p>
-            Ja, vad är en hållbarhetsarkitekt? Till skillnad från en byggnadsarkitekt som ritar hus, 
-            ritar hållbarhetsarkitekten lösningar för att stärka sociala och ekologiska värden.
-            Vad som är hållbart för naturen, för samhället och ekonomin, 
-            och hur vägen dit ser ut, är det som hållbarhetsarkitekten söker att förstå.
-            </p>
-            <p>
-            Utmaningarna för att ställa om mot ett mer hållbart byggande är många. De planetära gränser är ett sätt att illustrera hur mänskligheten 
-            just nu påverkar planetens naturliga system. Även om klimat- och miljöfrågor får stor uppmärksamhet, är hållbar utveckling ett bredare begrepp 
-            som omfattar människors hälsa, levnadsvillkor och rätten till ett värdigt liv, inte bara för oss idag utan också för kommande generationer.
-            </p>
-            <p>
-            <a href="https://www.stockholmresilience.org/research/planetary-boundaries.html">Läs mer om de nio planetära gränserna</a>
-            </p>
-            <p>
-            <a href="https://globalamalen.se/">Läs med om de 17 globala målen för hållbar utveckling</a> 
-            </p>
-        </section>
+        <figure class="home-figure">
+            <img
+                src="{{ '/assets/img/ritning.jpg' | relative_url }}"
+                alt="Blåkopia med planritning och fasader för ett litet hus"
+            />
+            <figcaption>Axel Forssén, Stadsarkivet. 1913</figcaption>
+        </figure>
 
-        <section class="home-section">
-            <h2>Om Hållbarhetsarkitekten</h2>
-            <p>
-            Jag som skriver här är byggnads- och hållbarhetsingenjör med intresse för systemförändring i den byggda miljön. 
-            Alltför ofta reduceras husdesign till en fråga om estetik och funktion.
-            Hälsoaspekter, påverkan på den lokala ekonomin och vad som är positivt för naturen är sådant som i längden gör våra byggnader än mer attraktiva, men det är sådant som vi lätt missar att adressera.  
-            </p>   
-            <p>
-            Genom den här sidan vill jag samla kunskap och information om alternativa lösningar för att transformera dagens byggande, för att lyfta blicken och se att det 
-            finns andra val som är mycket bättre, för människan, miljön och klimatet.
-            </p>   
-            <p>
-            Är du intresserad av att bygga hållbart, hör gärna av dig.
-            </p>   
-            <p>   
-            Annars, trevlig läsning!
+        <section class="contact">
+            <p class="contact__intro" id="contact-intro">
+                Behöver du hjälp att ta fram ritningar, undersöka och få rådgivning kring
+                ditt hus eller välja bra material och hantverkare?<br />
+                Hör av dig.
             </p>
-            <p class="home-section__contact">
-                <strong>Kontakt:</strong>
-                <a href="mailto:hej@hållbarhetsarkitekten.se"
-                    >hej@<strong>hållbarhets</strong>arkitekten.se</a
+            <form
+                class="contact-form"
+                id="contact-form"
+                action="https://formspree.io/f/xbdpevnj"
+                method="POST"
+            >
+                <label class="contact-form__label" for="email">Email</label>
+                <input
+                    class="contact-form__field"
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="din@email.se"
+                    required
+                />
+                <label class="contact-form__label contact-form__label--italic" for="message"
+                    >Meddelande</label
                 >
+                <textarea
+                    class="contact-form__field"
+                    id="message"
+                    name="message"
+                    placeholder="Skicka ett meddelande"
+                    required
+                ></textarea>
+                <button type="submit" class="contact-form__submit">Skicka</button>
+            </form>
+            <p class="contact-form__confirmation" id="contact-confirmation" hidden>
+                Tack! Ditt meddelande har skickats.
             </p>
         </section>
     </div>
 
     <aside class="home-sidebar">
-        <div class="sidebar-widget">
-            <p class="sidebar-widget__title">Dagens hållbara</p>
-            <ul class="sidebar-list">
-                {% assign dagens_posts = site.posts | where: "category", "Dagens Hållbara" %} {% for post in dagens_posts %}
-                <li
-                    class="sidebar-list__item{% if forloop.index > 3 %} sidebar-list__item--hidden{% endif %}"
-                >
-                    <span class="sidebar-list__title"
-                        >{{ post.title | truncatewords: 8 }}</span
-                    >
-                    <a
-                        href="{{ post.url | relative_url }}"
-                        class="sidebar-list__link"
-                        >läs mer</a
-                    >
-                </li>
-                {% endfor %} {% if dagens_posts.size == 0 %}
-                <li class="sidebar-list__item">
-                    <span class="sidebar-list__title">Inga poster ännu</span>
-                </li>
-                {% endif %}
-            </ul>
-            {% if dagens_posts.size > 3 %}
-            <a href="#" class="sidebar-load-more" id="sidebar-load-more"
-                >ladda fler</a
-            >
-            {% endif %}
-        </div>
+        <img
+            class="home-sidebar__portrait"
+            src="{{ '/assets/img/henrik.jpg' | relative_url }}"
+            alt="Porträtt av Henrik Vestergaard"
+        />
+        <p>Hej, mitt namn är Henrik Vestergaard, jag har grundat hållbarhetsarkitekten.</p>
+        <p>
+            Jag är ingenjör och utbildad i industriell ekologi. Jag uppskattar vacker
+            arkitektur där detaljerna och människors idéer får komma fram, där tid och
+            historia kombineras med känsla och smak.
+        </p>
+        <p>
+            Genom en vördnad för resurser strävar jag emot vackrare och mer uppskattade
+            byggnader.
+        </p>
+        <p class="home-sidebar__contact">
+            Kontakt:<br />
+            <a href="mailto:{{ site.email }}">{{ site.email }}</a><br />
+            <a href="tel:+46730872618">(+46) 73 08 72 618</a>
+        </p>
+        <p>/Henrik</p>
     </aside>
 </div>
 
 <script>
-    const loadMore = document.getElementById("sidebar-load-more");
-    if (loadMore) {
-        loadMore.addEventListener("click", function (e) {
+    const form = document.getElementById("contact-form");
+    if (form) {
+        form.addEventListener("submit", async function (e) {
             e.preventDefault();
-            const list =
-                this.closest(".sidebar-widget").querySelector(".sidebar-list");
-            list.classList.add("sidebar-list--expanded");
-            this.style.display = "none";
+            const response = await fetch(form.action, {
+                method: "POST",
+                body: new FormData(form),
+                headers: { Accept: "application/json" },
+            });
+            if (response.ok) {
+                form.hidden = true;
+                document.getElementById("contact-intro").hidden = true;
+                document.getElementById("contact-confirmation").hidden = false;
+            }
         });
     }
 </script>
